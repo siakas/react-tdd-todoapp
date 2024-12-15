@@ -1,3 +1,3 @@
 export const TodoList = () => {
-  return <ul className="todoList"></ul>;
+  return <ul className="space-y-2"></ul>;
 };

@@ -5,13 +5,18 @@ import pluginReactHooks from "eslint-plugin-react-hooks";
 import pluginReactRefresh from "eslint-plugin-react-refresh";
 import pluginImport from "eslint-plugin-import";
 import pluginUnusedImports from "eslint-plugin-unused-imports";
+import pluginTailwind from "eslint-plugin-tailwindcss";
 import configPrettier from "eslint-config-prettier";
 import tseslint from "typescript-eslint";
 
 export default tseslint.config(
   { ignores: ["dist"] },
   {
-    extends: [js.configs.recommended, ...tseslint.configs.recommended],
+    extends: [
+      js.configs.recommended,
+      ...tseslint.configs.recommended,
+      ...pluginTailwind.configs["flat/recommended"],
+    ],
     files: ["**/*.{ts,tsx}"],
     languageOptions: {
       ecmaVersion: 2020,

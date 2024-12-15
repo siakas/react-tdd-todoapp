@@ -4,7 +4,7 @@ import { Layout } from "@/components/layout/Layout";
 function App() {
   return (
     <Layout>
-      <h1 className="text-2xl font-bold text-card-foreground mb-4">
+      <h1 className="mb-4 text-2xl font-bold text-card-foreground">
         ToDo List
       </h1>
       <TodoList />

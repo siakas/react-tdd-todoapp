@@ -1,10 +1,10 @@
-import { Button } from "@/feature/components/Button";
+import { Button } from "@/components/ui/button";
 
 function App() {
   return (
     <>
       <div>
-        <Button />
+        <Button>ボタン</Button>
       </div>
     </>
   );

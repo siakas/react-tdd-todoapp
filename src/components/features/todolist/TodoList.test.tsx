@@ -7,4 +7,10 @@ describe("TodoList", () => {
     expect(screen.getByRole("list")).toBeInTheDocument();
     expect(screen.queryByRole("listitem")).not.toBeInTheDocument();
   });
+
+  it("入力エリアと追加ボタンが表示される", () => {
+    render(<TodoList />);
+    expect(screen.getByRole("textbox")).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: "追加" })).toBeInTheDocument();
+  });
 });

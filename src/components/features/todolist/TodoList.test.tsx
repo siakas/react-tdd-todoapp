@@ -27,4 +27,23 @@ describe("TodoList", () => {
     expect(screen.getByText("テストタスクを追加")).toBeInTheDocument();
     expect(input).toHaveValue("");
   });
+
+  // Todo のチェックボックスをチェックすると Todo が完了になり、タスクに打ち消し線のスタイルが適用される
+  it("Todo を完了できる", async () => {
+    render(<TodoList />);
+
+    const input = screen.getByRole("textbox");
+    const addButton = screen.getByRole("button", { name: "追加" });
+
+    await userEvent.type(input, "テストタスクを追加");
+    fireEvent.click(addButton);
+
+    const todoItem = screen.getByText("テストタスクを追加");
+    expect(todoItem).not.toHaveStyle("text-decoration: line-through");
+
+    const checkbox = screen.getByRole("checkbox");
+    fireEvent.click(checkbox);
+
+    expect(todoItem).toHaveStyle("text-decoration: line-through");
+  });
 });

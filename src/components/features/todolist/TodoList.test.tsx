@@ -1,6 +1,6 @@
 import { fireEvent, render, screen } from "@testing-library/react";
-import { TodoList } from "@/components/features/todolist/TodoList";
 import { userEvent } from "@testing-library/user-event";
+import { TodoList } from "@/components/features/todolist/TodoList";
 
 describe("TodoList", () => {
   it("初期状態では空のリストが表示される", () => {

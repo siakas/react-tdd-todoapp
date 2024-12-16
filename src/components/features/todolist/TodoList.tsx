@@ -1,9 +1,10 @@
+import type { FormEvent} from "react";
+import { useState } from "react";
+import { v4 as uuid } from "uuid";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { v4 as uuid } from "uuid";
-import { useTodoStore } from "@/stores/todoStore";
-import { FormEvent, useState } from "react";
 import { cn } from "@/lib/utils";
+import { useTodoStore } from "@/stores/todoStore";
 
 export const TodoList = () => {
   const [todoText, setTodoText] = useState("");

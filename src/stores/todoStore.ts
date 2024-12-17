@@ -4,10 +4,8 @@ import type { Todo } from "@/types/todo";
 
 export type TodoStore = {
   todoList: Todo[];
-  actions: {
-    addItem: (todo: Todo) => void;
-    toggleItem: (todo: Todo) => void;
-  };
+  addItem: (todo: Todo) => void;
+  toggleItem: (todo: Todo) => void;
 };
 
 export const useTodoStore = create<TodoStore>()(
@@ -15,23 +13,31 @@ export const useTodoStore = create<TodoStore>()(
     persist(
       (set) => ({
         todoList: [],
-        actions: {
-          addItem: (todo) =>
-            set((state) => ({ todoList: [...state.todoList, todo] })),
-          toggleItem: (todo) =>
-            set((state) => ({
+        addItem: (todo) => {
+          set(
+            (state) => ({ todoList: [...state.todoList, todo] }),
+            false,
+            "Todo/addItem",
+          );
+        },
+        toggleItem: (todo) => {
+          set(
+            (state) => ({
               todoList: state.todoList.map((i) => ({
                 ...i,
                 isCompleted: i.id === todo.id ? !i.isCompleted : i.isCompleted,
               })),
-            })),
+            }),
+            false,
+            "Todo/toggleItem",
+          );
         },
       }),
       {
-        name: "todoStore",
+        name: "TodoStore",
         storage: createJSONStorage(() => sessionStorage),
       },
     ),
-    { name: "todoStore" },
+    { name: "TodoStore" },
   ),
 );

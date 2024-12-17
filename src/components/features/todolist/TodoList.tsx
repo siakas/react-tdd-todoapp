@@ -11,8 +11,8 @@ import { useTodoStore } from "@/stores/todoStore";
 export const TodoList = () => {
   const [todoText, setTodoText] = useState("");
   const todoList = useTodoStore((state) => state.todoList);
-  const addItem = useTodoStore((state) => state.actions.addItem);
-  const toggleItem = useTodoStore((state) => state.actions.toggleItem);
+  const addItem = useTodoStore((state) => state.addItem);
+  const toggleItem = useTodoStore((state) => state.toggleItem);
 
   const addTodoItem = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -60,12 +60,13 @@ export const TodoList = () => {
               <Label
                 htmlFor={todo.id}
                 className={cn(
-                  "text-base cursor-pointer",
+                  "cursor-pointer",
                   todo.isCompleted && "line-through",
                 )}
               >
                 {todo.title}
               </Label>
+              <p className="ml-2 text-[10px] text-gray-400">{todo.id}</p>
             </div>
           </li>
         ))}
